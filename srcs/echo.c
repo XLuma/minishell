@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:03 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/19 09:47:59 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/20 17:08:07 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_echo(char **argv)
 	int	i;
 	int	newline;
 
-	i = 1;
+	i = 0;
 	newline = 1;
-	while (argv[i] && ft_strncmp("-n", argv[i], 2))
+	while (argv[i] && ft_strncmp("-n", argv[i], 2) == 0)
 	{
 		if (ft_strchr_rev(argv[i] + 1, 'n') != NULL)
 			break ;

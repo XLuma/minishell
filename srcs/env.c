@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:13 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 11:51:08 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:57:57 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_env(char **argv)
 
 	i = 0;
 	g_mini.output_code = SUCCESS;
-	if (argv[1])
+	if (argv[0])
 	{
 		print_error("env", NULL, ARGS_ERR, GEN_ERR);
 		return ;

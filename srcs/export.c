@@ -6,13 +6,13 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:29 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 13:19:52 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/20 13:54:05 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	verify_name(char **argv)
+static void	verify_name(char **argv)
 {
 	int		i;
 	char	**name;
@@ -23,7 +23,7 @@ int	verify_name(char **argv)
 		name = ft_split(argv[i], '=');
 		if (ft_isdigit(name[0][0]) || ft_count_char(name[0], NAMESET) \
 			!= (int)ft_strlen(name[0]))
-			print_error("export", NO_IDENT, argv[i], GEN_ERR);
+			print_error("export", name[0], NO_IDENT, GEN_ERR);
 		else
 		{
 			if (name[1])			
@@ -34,7 +34,6 @@ int	verify_name(char **argv)
 		ft_strarr_free(name);
 		i++;
 	}
-	return (0);
 }
 
 void	ft_export(char **argv)

@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 09:28:58 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 10:41:28 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:43:48 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_strarr_dup(char const **arr, int size_plus);
 void	ft_strarr_free(char **arr);
 int		ft_strarr_size(char **arr);
 void	ft_strarr_sort(char **arr, int size);
-int		ft_strarr_index(char **arr, const char *str);
+int		ft_strarr_index(char **arr, const char *str, const char *sep);
 char	*ft_strjoin_triple(const char *s1, const char *s2, const char *s3);
 
 #endif

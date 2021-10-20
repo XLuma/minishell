@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:13:36 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 11:54:22 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/20 15:57:46 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,8 @@ void	ft_addenv(const char *name, const char *value)
 	g_mini.env_size = ft_strarr_size(g_mini.env);
 }
 
-void	modify_env(char *path)
-{
-	int	i;
-	char	*pwd;
-	char	*newpath;
-
-	i = 0;
-	pwd = ft_getenv("PWD");
-	if (pwd == NULL)
-		pwd = ft_strdup("");
-	if (!ft_getenv("OLDPWD"))
-		ft_addenv("OLDPWD", pwd);
-	if (ft_strcmp(path, ft_getenv("HOME")) == 0)
-		newpath = path;
-	i = ft_strarr_index(g_mini.env, "OLDPWD=");
-	if (i >= 0)
-	{
-		free (g_mini.env[i]);
-		g_mini.env[i] = ft_strjoin("OLDPWD=", pwd);
-	}
-	i = ft_strarr_index(g_mini.env, "PWD=");
-	if (i >= 0)
-	{
-		free (g_mini.env[i]);
-		g_mini.env[i] = ft_strjoin("PWD=", newpath); // Current folder
-	}
-}
-
 int	ft_setenv(const char *name, const char *value, int overwrite)
 {
-	char	*str;
 	int		i;
 
 	if (name == NULL || ft_strlen(name) == 0 || ft_strchr(name, '='))
@@ -73,14 +44,12 @@ int	ft_setenv(const char *name, const char *value, int overwrite)
 		ft_addenv(name, value);
 		return (0);
 	}
-	str = ft_strjoin(name, "=");
-	i = ft_strarr_index(g_mini.env, str);
+	i = ft_strarr_index(g_mini.env, name, "=");
 	if (value && overwrite)
 	{
 		free (g_mini.env[i]);
-		g_mini.env[i] = ft_strjoin(str, value);
+		g_mini.env[i] = ft_strjoin_triple(name, "=", value);
 	}
-	free (str);
 	return (0);
 }
 

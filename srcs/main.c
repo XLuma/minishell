@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 10:47:03 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 13:22:44 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/20 16:55:20 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,37 +35,31 @@ int	main(int argc, char **argv, char **envp)
 	(void) argc;
 	(void) argv;
 	init_minishell(envp);
-	arg = malloc(4 * sizeof(char *));
-	arg[0] = ft_strdup("0=0");
-	arg[1] = ft_strdup("1=1");
-	arg[2] = ft_strdup("C=2");
-	arg[3] = NULL;
 	while (1)
 	{
 		line = readline("minishell-1.0$ ");
 		if (ft_strlen(line) > 0)
 		{
 			add_history(line);
+			arg = ft_split(line, ' ');
+			free(line);
 			// cmd = ft_split(line, '|');
-			if (ft_strcmp(line, "export") == 0)
-			{
-				ft_export(arg);
-				arg[0] = NULL;
-				ft_export(arg);
-			}
-			else if (ft_strcmp(line, "env") == 0)
-			{
+			if (ft_strcmp(arg[0], "export") == 0)
+				ft_export(arg + 1);
+			else if (ft_strcmp(arg[0], "unset") == 0)
+				ft_unset(arg + 1);
+			else if (ft_strcmp(arg[0], "env") == 0)
 				ft_env(arg + 1);
-			}
-			else if (ft_strcmp(line, "exit") == 0)
-			{
-				free (line);
-				printf("exit\n");
-				// rl_clear_history();
-				break ;
-			}
+			else if (ft_strcmp(arg[0], "echo") == 0)
+				ft_echo(arg + 1);
+			else if (ft_strcmp(arg[0], "pwd") == 0)
+				ft_pwd();
+			else if (ft_strcmp(arg[0], "cd") == 0)
+				ft_cd(arg);
+			else if (ft_strcmp(arg[0], "exit") == 0)
+				ft_exit(arg);
+			ft_strarr_free(arg);
 		}
-		free (line);
 	}
 	return (EXIT_SUCCESS);
 }
