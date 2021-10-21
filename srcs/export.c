@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:29 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 13:54:05 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 11:08:47 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	verify_name(char **argv)
 {
 	int		i;
 	char	**name;
-	
+
 	i = 0;
 	while (argv[i])
 	{
@@ -26,7 +26,7 @@ static void	verify_name(char **argv)
 			print_error("export", name[0], NO_IDENT, GEN_ERR);
 		else
 		{
-			if (name[1])			
+			if (name[1])
 				ft_setenv(name[0], argv[i] + ft_strlen(name[0]) + 1, 1);
 			else
 				ft_setenv(name[0], NULL, 1);
@@ -40,7 +40,7 @@ void	ft_export(char **argv)
 {
 	char	**sort;
 	int		i;
-	
+
 	i = -1;
 	g_mini.output_code = SUCCESS;
 	if (!argv[0])

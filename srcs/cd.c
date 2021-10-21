@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 15:38:08 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 15:58:14 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 10:55:28 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	modify_env(void)
 {
-	int	i;
+	int		i;
 	char	*pwd;
 	char	*cwd;
 

@@ -6,16 +6,16 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:23 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 16:57:57 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 10:54:22 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-u_int32_t	ft_atoi_32(const char *s)
+long int	ft_atoi_64(const char *s)
 {
-	u_int32_t	result;
-	u_int32_t	minus;
+	long int	result;
+	long int	minus;
 
 	result = 0;
 	minus = 1;
@@ -49,6 +49,20 @@ int	is_number(const char *str)
 	return (1);
 }
 
+int	check_limits(char *str)
+{
+	int			sign;
+	long int	nb;
+
+	sign = 1;
+	if (str[0] == '-')
+		sign = -1;
+	nb = ft_atoi_64(str);
+	if ((nb < 0 && sign == 1) || (nb >= 0 && sign == -1))
+		return (1);
+	return (0);
+}
+
 void	ft_exit(char **argv)
 {
 	ft_putendl_fd("exit", STDOUT_FILENO);
@@ -61,10 +75,13 @@ void	ft_exit(char **argv)
 		print_error("exit", NULL, ARGS_ERR, GEN_ERR);
 		return ;
 	}
+	else if (check_limits(argv[1]))
+		print_error("exit", argv[1], NUM_ERR, EXIT_ERR);
 	else
-		g_mini.output_code = ft_atoi_32(argv[1]) % 256;
+		g_mini.output_code = ft_atoi_64(argv[1]) % 256;
 	ft_strarr_free(g_mini.env);
 	ft_strarr_free(g_mini.path);
+	ft_strarr_free(argv);
 	rl_clear_history();
 	exit ((int)g_mini.output_code);
 }

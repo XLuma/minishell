@@ -6,18 +6,18 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 10:47:03 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 16:55:20 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 11:08:17 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-t_minishell g_mini;
+t_minishell	g_mini;
 
 void	init_minishell(char **envp)
 {
-	char		*path;
-	
+	char	*path;
+
 	g_mini.env = ft_strarr_dup((char const **)envp, 0);
 	g_mini.env_size = ft_strarr_size(g_mini.env);
 	path = getenv("PATH");
@@ -27,11 +27,9 @@ void	init_minishell(char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	// char	path[PATH_MAX];
 	char	*line;
-	// char	**cmd;
 	char	**arg;
-	
+
 	(void) argc;
 	(void) argv;
 	init_minishell(envp);
@@ -43,7 +41,6 @@ int	main(int argc, char **argv, char **envp)
 			add_history(line);
 			arg = ft_split(line, ' ');
 			free(line);
-			// cmd = ft_split(line, '|');
 			if (ft_strcmp(arg[0], "export") == 0)
 				ft_export(arg + 1);
 			else if (ft_strcmp(arg[0], "unset") == 0)

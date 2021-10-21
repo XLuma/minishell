@@ -6,11 +6,28 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:03 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 17:08:07 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 11:03:38 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+void	ft_echo2(char **argv, int i)
+{
+	while (argv[i])
+	{
+		if (ft_strcmp(argv[i], "%?") == 0)
+			ft_putnbr_fd((int)g_mini.output_code, STDOUT_FILENO);
+		else
+		{		
+			ft_putstr_fd(argv[i], STDOUT_FILENO);
+			i++;
+			if (!argv[i])
+				break ;
+			ft_putchar_fd(' ', STDOUT_FILENO);
+		}
+	}
+}
 
 void	ft_echo(char **argv)
 {
@@ -26,14 +43,7 @@ void	ft_echo(char **argv)
 		newline = 0;
 		i++;
 	}
-	while (argv[i])
-	{
-		ft_putstr_fd(argv[i], STDOUT_FILENO);
-		i++;
-		if (!argv[i])
-			break ;
-		ft_putchar_fd(' ', STDOUT_FILENO);
-	}
+	ft_echo2(argv, i);
 	if (newline)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 }

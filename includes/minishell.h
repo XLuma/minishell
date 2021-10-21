@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 10:46:28 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 16:59:48 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 10:22:54 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_minishell
 	char		**env;
 	char		**path;
 	int			env_size;
-	uint32_t	output_code;
+	long int	output_code;
 }	t_minishell;
 
 extern t_minishell g_mini;
