@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 10:46:28 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/21 10:22:54 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 15:31:04 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,23 @@
 # define ARGS_ERR "too many arguments"
 # define NO_IDENT "not a valid identifier"
 # define NUM_ERR "numeric argument required"
+# define QUOTES "unclosed quote(s)"
 
 # define SUCCESS 0
 # define GEN_ERR 1
+# define SYNTAX_ERR 2
 # define EXIT_ERR 255
 
 # define NAMESET "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_"
+
+typedef struct s_token
+{
+	struct s_token	*prev;
+	struct s_token	*next;
+	struct s_token	*pipe;
+	char			**cmd;
+	
+} t_token;
 
 typedef struct s_minishell
 {
@@ -43,6 +54,7 @@ typedef struct s_minishell
 	char		**path;
 	int			env_size;
 	long int	output_code;
+	bool		open_quote;
 }	t_minishell;
 
 extern t_minishell g_mini;

@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 10:47:03 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/21 11:08:17 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/21 15:17:39 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,25 @@ void	init_minishell(char **envp)
 	path = getenv("PATH");
 	g_mini.path = ft_split(path, ':');
 	g_mini.output_code = SUCCESS;
+	g_mini.output_code = false;
+}
+
+void	parse_cmds(char **arg)
+{
+	if (ft_strcmp(arg[0], "export") == 0)
+		ft_export(arg + 1);
+	else if (ft_strcmp(arg[0], "unset") == 0)
+		ft_unset(arg + 1);
+	else if (ft_strcmp(arg[0], "env") == 0)
+		ft_env(arg + 1);
+	else if (ft_strcmp(arg[0], "echo") == 0)
+		ft_echo(arg + 1);
+	else if (ft_strcmp(arg[0], "pwd") == 0)
+		ft_pwd();
+	else if (ft_strcmp(arg[0], "cd") == 0)
+		ft_cd(arg);
+	else if (ft_strcmp(arg[0], "exit") == 0)
+		ft_exit(arg);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -41,20 +60,7 @@ int	main(int argc, char **argv, char **envp)
 			add_history(line);
 			arg = ft_split(line, ' ');
 			free(line);
-			if (ft_strcmp(arg[0], "export") == 0)
-				ft_export(arg + 1);
-			else if (ft_strcmp(arg[0], "unset") == 0)
-				ft_unset(arg + 1);
-			else if (ft_strcmp(arg[0], "env") == 0)
-				ft_env(arg + 1);
-			else if (ft_strcmp(arg[0], "echo") == 0)
-				ft_echo(arg + 1);
-			else if (ft_strcmp(arg[0], "pwd") == 0)
-				ft_pwd();
-			else if (ft_strcmp(arg[0], "cd") == 0)
-				ft_cd(arg);
-			else if (ft_strcmp(arg[0], "exit") == 0)
-				ft_exit(arg);
+			parse_cmds(arg);
 			ft_strarr_free(arg);
 		}
 	}
