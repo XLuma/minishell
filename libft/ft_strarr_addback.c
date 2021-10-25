@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   syntax_errors.c                                    :+:      :+:    :+:   */
+/*   ft_strarr_addback.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 15:03:49 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/22 10:30:27 by gasselin         ###   ########.fr       */
+/*   Created: 2021/10/22 11:55:47 by gasselin          #+#    #+#             */
+/*   Updated: 2021/10/25 11:00:26 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-bool	verify_quotes(const char *str)
+char	**ft_strarr_addback(char **arr, char *str)
 {
-	int	i;
+	char	**dup;
+	int		i;
 
 	i = 0;
-	while (str[i])
-	{
-		if (g_mini.open_quote == false && (str[i] == 34 || str[i] == 39))
-		{
-			g_mini.open_quote = true;
-			g_mini.char_quote = str[i];
-		}
-		else if (g_mini.open_quote == true && str[i] == g_mini.char_quote)
-			g_mini.open_quote = false;
-		i++;
-	}
-	return (g_mini.open_quote);
+	if (arr)
+		while (arr[i])
+			i++;
+	dup = ft_strarr_dup(arr, 1);
+	dup[i++] = (char *)str;
+	dup[i] = NULL;
+	ft_strarr_free((char **)arr);
+	return (dup);
 }

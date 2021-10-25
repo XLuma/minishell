@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 09:28:58 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/20 14:43:48 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/25 11:02:17 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_iswhitespace(int c);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
@@ -78,11 +79,12 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_count_char(const char *s, const char *set);
 int		ft_abs(int i);
 int		ft_strcmp(const char *s1, const char *s2);
-char	**ft_strarr_dup(char const **arr, int size_plus);
+char	**ft_strarr_dup(char **arr, int size_plus);
 void	ft_strarr_free(char **arr);
 int		ft_strarr_size(char **arr);
 void	ft_strarr_sort(char **arr, int size);
 int		ft_strarr_index(char **arr, const char *str, const char *sep);
+char	**ft_strarr_addback(char **arr, char *str);
 char	*ft_strjoin_triple(const char *s1, const char *s2, const char *s3);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 09:29:07 by gasselin          #+#    #+#              #
-#    Updated: 2021/10/20 10:41:46 by gasselin         ###   ########.fr        #
+#    Updated: 2021/10/22 12:06:03 by gasselin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	= ft_memset.c \
 		ft_isprint.c \
 		ft_toupper.c \
 		ft_tolower.c \
+		ft_iswhitespace.c \
 		ft_strchr.c \
 		ft_strchr_rev.c \
 		ft_strrchr.c \
@@ -58,6 +59,7 @@ SRCS	= ft_memset.c \
 		ft_strarr_size.c \
 		ft_strarr_sort.c \
 		ft_strarr_index.c \
+		ft_strarr_addback.c \
 		ft_strjoin_triple.c
 
 BONUS	= ft_lstnew.c \

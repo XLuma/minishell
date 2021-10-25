@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 10:13:36 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/21 13:38:11 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/25 11:35:58 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_addenv(const char *name, const char *value)
 	char	**env;
 	char	*str;
 
-	env = ft_strarr_dup((const char **)g_mini.env, 1);
+	env = ft_strarr_dup(g_mini.env, 1);
 	ft_strarr_free(g_mini.env);
 	g_mini.env = env;
 	g_mini.env[g_mini.env_size] = ft_strdup(name);

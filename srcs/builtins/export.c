@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:29 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/21 13:38:05 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/25 11:35:32 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_export(char **argv)
 	g_mini.output_code = SUCCESS;
 	if (!argv[0])
 	{
-		sort = ft_strarr_dup((const char **)g_mini.env, 0);
+		sort = ft_strarr_dup(g_mini.env, 0);
 		ft_strarr_sort(sort, g_mini.env_size);
 		while (++i < g_mini.env_size)
 			ft_putendl_fd(sort[i], STDOUT_FILENO);

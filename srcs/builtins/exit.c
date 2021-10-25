@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:29:23 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/21 13:38:00 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/25 17:11:21 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	ft_exit(char **argv)
 		print_error("exit", argv[1], NUM_ERR, EXIT_ERR);
 	else
 		g_mini.output_code = ft_atoi_64(argv[1]) % 256;
-	ft_strarr_free(g_mini.env);
-	ft_strarr_free(g_mini.path);
-	ft_strarr_free(argv);
-	rl_clear_history();
+	// ft_strarr_free(g_mini.env);
+	// ft_strarr_free(g_mini.path);
+	// ft_strarr_free(argv);
+	//rl_clear_history();
 	exit ((int)g_mini.output_code);
 }

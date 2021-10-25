@@ -6,7 +6,7 @@
 /*   By: gasselin <gasselin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 10:46:28 by gasselin          #+#    #+#             */
-/*   Updated: 2021/10/21 15:31:04 by gasselin         ###   ########.fr       */
+/*   Updated: 2021/10/25 17:08:27 by gasselin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@
 # define SYNTAX_ERR 2
 # define EXIT_ERR 255
 
+# define WHITESPACES "\t\n\v\f\r "
 # define NAMESET "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_"
 
 typedef struct s_token
 {
 	struct s_token	*prev;
 	struct s_token	*next;
-	struct s_token	*pipe;
 	char			**cmd;
 	
 } t_token;
@@ -55,6 +55,7 @@ typedef struct s_minishell
 	int			env_size;
 	long int	output_code;
 	bool		open_quote;
+	char		char_quote;
 }	t_minishell;
 
 extern t_minishell g_mini;
@@ -70,6 +71,8 @@ void	ft_exit(char **argv);
 char	*ft_getenv(const char *name);
 int		ft_setenv(const char *name, const char *value, int overwrite);
 void	ft_addenv(const char *name, const char *value);
+
+void	parse_args(t_token *token, const char *line, int *index);
 
 void	print_error(const char *v1, const char *v2, const char *v3, int code);
 
